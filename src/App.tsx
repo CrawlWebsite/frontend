@@ -9,6 +9,7 @@ export default function App() {
     eager: true,
   })
 
+  console.log("4444")
   return (
     <BrowserRouter>
       <Routes pages={pages} />
