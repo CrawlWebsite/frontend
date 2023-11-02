@@ -1,7 +1,4 @@
-import {
-  classnames,
-  typography,
-} from "@scrum-management/tailwindcss-classnames"
+import { classnames, typography } from "@frontend/tailwindcss-classnames"
 
 const NotFound = () => {
   return <div className={classnames(typography("font-bold"))}>NotFound</div>

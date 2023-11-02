@@ -1,5 +1,10 @@
 import { BrowserRouter } from "react-router-dom"
+import { Provider } from "react-redux"
+
 import { Routes } from "./react-routes/routes"
+
+import { reduxStore } from "./redux/store"
+
 import "./index.css"
 
 export default function App() {
@@ -9,10 +14,11 @@ export default function App() {
     eager: true,
   })
 
-  console.log("4444")
   return (
-    <BrowserRouter>
-      <Routes pages={pages} />
-    </BrowserRouter>
+    <Provider store={reduxStore}>
+      <BrowserRouter>
+        <Routes pages={pages} />
+      </BrowserRouter>
+    </Provider>
   )
 }

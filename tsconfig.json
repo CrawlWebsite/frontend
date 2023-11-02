@@ -5,8 +5,11 @@
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "ESNext",
     "skipLibCheck": true,
+    "baseUrl": ".",
     "paths": {
-      "@scrum-management/tailwindcss-classnames": ["./src/style.generated.ts"]
+      "@frontend/tailwindcss-classnames": ["./src/style.generated.ts"],
+      "@frontend/*": ["./src/*", "./dist/*", ""],
+      "helpers/*": ["src/helpers/*"]
     },
 
     /* Bundler mode */
