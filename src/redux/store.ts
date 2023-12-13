@@ -1,5 +1,11 @@
-import { legacy_createStore as createStore, applyMiddleware } from "redux"
-import thunk from "redux-thunk"
-import { rootReducer } from "./combineReducer"
+import { vehicleReducer } from "@frontend/handlers/vehicle/vehicle.reducer"
+import { configureStore } from "@reduxjs/toolkit"
 
-export const reduxStore = createStore(rootReducer, applyMiddleware(thunk))
+export const store = configureStore({
+  reducer: { vehicle: vehicleReducer },
+})
+
+// Infer the `RootState` and `AppDispatch` types from the store itself
+export type RootState = ReturnType<typeof store.getState>
+// Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
+export type AppDispatch = typeof store.dispatch

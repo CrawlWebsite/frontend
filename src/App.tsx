@@ -1,9 +1,9 @@
 import { BrowserRouter } from "react-router-dom"
 import { Provider } from "react-redux"
+import { Layout } from "@frontend/modules/layout"
+import { store } from "@frontend/redux-store"
 
 import { Routes } from "./react-routes/routes"
-
-import { reduxStore } from "./redux/store"
 
 import "./index.css"
 
@@ -15,9 +15,11 @@ export default function App() {
   })
 
   return (
-    <Provider store={reduxStore}>
+    <Provider store={store}>
       <BrowserRouter>
-        <Routes pages={pages} />
+        <Layout>
+          <Routes pages={pages} />
+        </Layout>
       </BrowserRouter>
     </Provider>
   )

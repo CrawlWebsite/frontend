@@ -1,3 +1,4 @@
+import { createAsyncThunk } from "@reduxjs/toolkit"
 import { VehicleService } from "@frontend/api/vehicle"
 
 export class VehicleController {
@@ -12,15 +13,17 @@ export class VehicleController {
     return VehicleController.instance
   }
 
-  public getCars() {
-    const fetchFn = this.vehicleService.getCars({})
+  public getCars = createAsyncThunk(
+    "getCarsAPI",
+    async (_, { rejectWithValue }) => {
+      const fetchFn = this.vehicleService.getCars({})
 
-    fetchFn()
-      .then(() => {
-        console.log("Vehicle")
-      })
-      .catch((err: any) => {
-        console.log("err", err)
-      })
-  }
+      try {
+        const response = await fetchFn()
+        return response.data.message
+      } catch (err: any) {
+        return rejectWithValue(err.message)
+      }
+    }
+  )
 }

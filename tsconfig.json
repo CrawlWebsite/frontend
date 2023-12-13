@@ -8,6 +8,7 @@
     "baseUrl": ".",
     "paths": {
       "@frontend/tailwindcss-classnames": ["./src/style.generated.ts"],
+      "@frontend/redux-store": ["./src/redux/store.ts"],
       "@frontend/*": ["./src/*", "./dist/*", ""],
       "helpers/*": ["src/helpers/*"]
     },

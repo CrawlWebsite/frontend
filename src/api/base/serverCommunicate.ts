@@ -15,11 +15,19 @@ export class ServerCommunicate implements IServerCommunicate {
   }
 
   private mutate(url: string, options: AxiosRequestConfig<any>) {
-    const fetchFn = () =>
-      axios({
+    const fetchFn = async () => {
+      return axios({
         url: `${this.baseUrl}${url}`,
         ...options,
       })
+        .then((res) => {
+          return Promise.resolve(res?.data?.message)
+        })
+        .catch((error: any) => {
+          console.log("error", error)
+          return Promise.reject(error)
+        })
+    }
 
     return fetchFn
   }

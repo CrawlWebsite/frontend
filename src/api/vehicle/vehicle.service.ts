@@ -13,6 +13,6 @@ export class VehicleService extends BaseService {
   }
 
   public getCars(options: AxiosRequestConfig<any>) {
-    return this.serverCommunicate.get("/api/cars", options)
+    return this.serverCommunicate.get("/vehicle/car", options)
   }
 }

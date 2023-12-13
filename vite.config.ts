@@ -11,6 +11,7 @@ export default defineConfig({
         __dirname,
         "./src/style.generated.ts"
       ),
+      "@frontend/redux-store": path.resolve(__dirname, "./src/redux/store.ts"),
       "@frontend": path.resolve(__dirname, "./src/"),
       "/helper": path.resolve(__dirname, "./src/helpers/"),
     },

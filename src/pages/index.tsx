@@ -1,20 +1,20 @@
 import React from "react"
+
 import { classnames, typography } from "@frontend/tailwindcss-classnames"
 import { VehicleController } from "@frontend/handlers/vehicle"
-import { useSelector, shallowEqual } from "react-redux"
+import { useReduxDispatch, useReduxSelector } from "@frontend/redux/hooks"
 
 const HomePage = () => {
   const vehicleController = VehicleController.getInstance()
-  const { vehicle } = useSelector(({ vehicle }) => {
-    return { vehicle }
-  }, shallowEqual)
+  const { vehicle } = useReduxSelector(["vehicle"])
+  const dispatch = useReduxDispatch()
 
   React.useEffect(() => {
-    vehicleController.getCars()
+    dispatch(vehicleController.getCars())
   }, [])
 
   React.useEffect(() => {
-    console.log("vehicle")
+    console.log("vehicle", vehicle)
   }, [vehicle])
 
   return <div className={classnames(typography("font-bold"))}>Home</div>
