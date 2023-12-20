@@ -1,24 +1,9 @@
-import { AxiosResponse, AxiosRequestConfig } from "axios"
+import { AxiosRequestConfig } from "axios"
 
 export interface IServerCommunicate {
-  get: (
-    url: string,
-    options: AxiosRequestConfig<any>
-  ) => () => Promise<AxiosResponse<any, any>>
-  post: (
-    url: string,
-    options: AxiosRequestConfig<any>
-  ) => () => Promise<AxiosResponse<any, any>>
-  put: (
-    url: string,
-    options: AxiosRequestConfig<any>
-  ) => () => Promise<AxiosResponse<any, any>>
-  patch: (
-    url: string,
-    options: AxiosRequestConfig<any>
-  ) => () => Promise<AxiosResponse<any, any>>
-  delete: (
-    url: string,
-    options: AxiosRequestConfig<any>
-  ) => () => Promise<AxiosResponse<any, any>>
+  get: (url: string, options: AxiosRequestConfig<any>) => () => Promise<any>
+  post: (url: string, options: AxiosRequestConfig<any>) => () => Promise<any>
+  put: (url: string, options: AxiosRequestConfig<any>) => () => Promise<any>
+  patch: (url: string, options: AxiosRequestConfig<any>) => () => Promise<any>
+  delete: (url: string, options: AxiosRequestConfig<any>) => () => Promise<any>
 }

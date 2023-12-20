@@ -13,6 +13,6 @@ export class UserService extends BaseService {
   }
 
   public getUsers(options: AxiosRequestConfig<any>) {
-    return this.serverCommunicate.get("/api/user", options)
+    return this.serverCommunicate.get("/user", options)
   }
 }

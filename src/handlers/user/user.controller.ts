@@ -14,13 +14,13 @@ export class UserController {
   }
 
   public getUsers = createAsyncThunk(
-    "getCarsAPI",
+    "getUsersAPI",
     async (_, { rejectWithValue }) => {
       const fetchFn = this.userService.getUsers({})
 
       try {
         const response = await fetchFn()
-        return response.data.message
+        return response
       } catch (err: any) {
         return rejectWithValue(err.message)
       }

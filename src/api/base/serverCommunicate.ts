@@ -18,6 +18,12 @@ export class ServerCommunicate implements IServerCommunicate {
     const fetchFn = async () => {
       return axios({
         url: `${this.baseUrl}${url}`,
+        headers: {
+          ...options?.headers,
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Credentials": true,
+          "Content-Type": "application/json",
+        },
         ...options,
       })
         .then((res) => {

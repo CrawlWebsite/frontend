@@ -1,22 +1,40 @@
 import { createSlice } from "@reduxjs/toolkit"
 import { UserController } from "./user.controller"
-import { UserState } from "./user.state"
+import { UserState } from "./types"
+import { User } from "@frontend/repositories"
 
 const userController = UserController.getInstance()
 
-const initialState = new UserState()
+const initialState: UserState = {}
 
 export const userSlice = createSlice({
   name: "userSlice",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(userController.getUsers.fulfilled, (state, action) => {
-      state.setUsers(action.payload)
-    })
-    builder.addCase(userController.getUsers.rejected, (state, action) => {
-      state.setError(action.payload)
-    })
+    builder.addCase(
+      userController.getUsers.fulfilled,
+      (state, action): UserState => {
+        const { items, page, perPage, total } = action.payload
+
+        return {
+          ...state,
+          users: items.map((user: any): User => User.buildUser(user)),
+          page,
+          perPage,
+          totalUsers: total,
+        }
+      }
+    )
+    builder.addCase(
+      userController.getUsers.rejected,
+      (state, action): UserState => {
+        return {
+          ...state,
+          error: action.payload,
+        }
+      }
+    )
   },
 })
 
