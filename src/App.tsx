@@ -1,11 +1,13 @@
 import { BrowserRouter } from "react-router-dom"
 import { Provider } from "react-redux"
 import { Layout } from "@frontend/modules/layout"
+import { AuthProvider } from "@frontend/modules/auth"
 import { store } from "@frontend/redux-store"
 
 import { Routes } from "./react-routes/routes"
 
 import "./index.css"
+import "./App.css"
 
 export default function App() {
   // Any .tsx or .jsx files in /pages will become a route
@@ -16,11 +18,13 @@ export default function App() {
 
   return (
     <Provider store={store}>
-      <BrowserRouter>
-        <Layout>
-          <Routes pages={pages} />
-        </Layout>
-      </BrowserRouter>
+      <AuthProvider>
+        <BrowserRouter>
+          <Layout>
+            <Routes pages={pages} />
+          </Layout>
+        </BrowserRouter>
+      </AuthProvider>
     </Provider>
   )
 }
