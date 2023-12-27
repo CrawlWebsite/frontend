@@ -5,4 +5,4 @@ export type IconProps = {
   type: IconType
 }
 
-export type IconType = "bell"
+export type IconType = "bell" | "angle-down" | "user" | "website"

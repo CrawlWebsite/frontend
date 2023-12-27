@@ -30,7 +30,7 @@ const useStyles = () => {
     root: classnames(display("flex")),
     sidebar: classnames(
       sizing("w-52", "h-screen"),
-      spacing("px-5", "pt-5"),
+      spacing("pt-5"),
       backgroundColor("bg-white")
     ),
     content: classnames(flex("flex-1"), spacing("px-5", "pt-5")),

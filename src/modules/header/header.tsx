@@ -18,8 +18,8 @@ export const Header = () => {
   return (
     <div className={classnames(styles.root)}>
       <div className={styles.welcome}>
-        <div className={styles.welcomeTitle}>Hello, {user?.name}</div>
-        <div>Have a nice day</div>
+        <div className={styles.title}>Hello, {user?.name}</div>
+        <div className={styles.subTitle}>Have a nice day</div>
       </div>
       <div className={classnames(styles.profile)}>
         <Icon type="bell" classNames={styles.notiIcon} />
@@ -38,7 +38,8 @@ const useStyles = () => {
       justifyContent("justify-between")
     ),
     welcome: classnames(spacing("my-auto")),
-    welcomeTitle: classnames(typography("font-semibold", "text-tx20")),
+    title: classnames(typography("text-gray-5", "font-semibold", "text-tx20")),
+    subTitle: classnames(typography("text-gray-2")),
     notiIcon: classnames(sizing("w-4", "h-4")),
     profile: classnames(
       display("flex"),
