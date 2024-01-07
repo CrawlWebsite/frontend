@@ -1,4 +1,5 @@
 /* eslint-disable react-hooks/rules-of-hooks */
+import { PAGE_LINKS } from "@frontend/react-routes/permissionLink"
 import { IServerCommunicate } from "./serverCommunicate.interface"
 import axios, { AxiosRequestConfig } from "axios"
 
@@ -21,9 +22,11 @@ export class ServerCommunicate implements IServerCommunicate {
         headers: {
           ...options?.headers,
           "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Headers": "*",
           "Access-Control-Allow-Credentials": true,
           "Content-Type": "application/json",
         },
+        withCredentials: true,
         ...options,
       })
         .then((res) => {
@@ -31,6 +34,9 @@ export class ServerCommunicate implements IServerCommunicate {
         })
         .catch((error: any) => {
           console.log("error", error)
+          if (error?.response?.status === 401) {
+            window.location.href = PAGE_LINKS.LOGIN.path
+          }
           return Promise.reject(error)
         })
     }

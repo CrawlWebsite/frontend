@@ -15,14 +15,15 @@ export const userSlice = createSlice({
     builder.addCase(
       userController.getUsers.fulfilled,
       (state, action): UserState => {
-        const { items, page, perPage, total } = action.payload
+        const { records, metadata } = action.payload
+        const { currentPage, pageSize, totalCount } = metadata
 
         return {
           ...state,
-          users: items.map((user: any): User => User.buildUser(user)),
-          page,
-          perPage,
-          totalUsers: total,
+          users: records.map((user: any): User => User.buildUser(user)),
+          currentPage,
+          pageSize,
+          totalUsers: totalCount,
         }
       }
     )

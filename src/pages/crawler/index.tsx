@@ -1,5 +1,7 @@
-const Crawler = () => {
-  return <div>Crawl</div>
+import { Crawler } from "@frontend/templates/crawler"
+
+const CrawlerPage = () => {
+  return <Crawler />
 }
 
-export default Crawler
+export default CrawlerPage

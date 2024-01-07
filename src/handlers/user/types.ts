@@ -1,9 +1,9 @@
-import { User } from "@frontend/repositories/user"
+import { User } from "@frontend/repositories"
 
 export type UserState = {
   users?: User[]
-  page?: number
-  perPage?: number
+  currentPage?: number
+  pageSize?: number
   totalUsers?: number
   error?: any
 }

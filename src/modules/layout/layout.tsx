@@ -18,7 +18,9 @@ export const Layout = (props: LayoutProps) => {
         <SideBar />
       </div>
       <div className={classnames(styles.content)}>
-        <Header />
+        <div className={classnames(styles.header)}>
+          <Header />
+        </div>
         <div>{props.children}</div>
       </div>
     </div>
@@ -33,6 +35,7 @@ const useStyles = () => {
       spacing("pt-5"),
       backgroundColor("bg-white")
     ),
+    header: classnames(spacing("mb-5")),
     content: classnames(flex("flex-1"), spacing("px-5", "pt-5")),
   }
 }
