@@ -1,16 +1,16 @@
-import { Header } from "@frontend/modules/header"
-import { LayoutProps } from "./types"
-import { SideBar } from "../sidebar"
+import { Header } from '@frontend/modules/header';
+import { LayoutProps } from './types';
+import { SideBar } from '../sidebar';
 import classnames, {
   backgroundColor,
   display,
   flex,
   sizing,
   spacing,
-} from "@frontend/tailwindcss-classnames"
+} from '@frontend/tailwindcss-classnames';
 
 export const Layout = (props: LayoutProps) => {
-  const styles = useStyles()
+  const styles = useStyles();
 
   return (
     <div className={classnames(styles.root)}>
@@ -24,18 +24,18 @@ export const Layout = (props: LayoutProps) => {
         <div>{props.children}</div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 const useStyles = () => {
   return {
-    root: classnames(display("flex")),
+    root: classnames(display('flex')),
     sidebar: classnames(
-      sizing("w-52", "h-screen"),
-      spacing("pt-5"),
-      backgroundColor("bg-white")
+      sizing('w-52', 'h-screen'),
+      spacing('pt-5'),
+      backgroundColor('bg-white'),
     ),
-    header: classnames(spacing("mb-5")),
-    content: classnames(flex("flex-1"), spacing("px-5", "pt-5")),
-  }
-}
+    header: classnames(spacing('mb-5')),
+    content: classnames(flex('flex-1'), spacing('px-5', 'pt-5')),
+  };
+};

@@ -1,5 +1,5 @@
-import { useState } from "react"
-import { Icon } from "@frontend/components/icon"
+import { useState } from 'react';
+import { Icon } from '@frontend/components/icon';
 import classnames, {
   alignItems,
   backgroundColor,
@@ -15,17 +15,17 @@ import classnames, {
   sizing,
   spacing,
   typography,
-} from "@frontend/tailwindcss-classnames"
-import { Link, useLocation } from "react-router-dom"
-import { SideBarItemType } from "./types"
+} from '@frontend/tailwindcss-classnames';
+import { Link, useLocation } from 'react-router-dom';
+import { SideBarItemType } from './types';
 
 export const SideBar = () => {
-  const styles = useStyles()
+  const styles = useStyles();
 
   const links: SideBarItemType[] = [
-    { title: "User", iconType: "user", url: "/user" },
-    { title: "Crawler", iconType: "website", url: "/crawler" },
-  ]
+    { title: 'User', iconType: 'user', url: '/user' },
+    { title: 'Crawler', iconType: 'website', url: '/crawler' },
+  ];
 
   return (
     <div className={classnames(styles.root)}>
@@ -35,38 +35,39 @@ export const SideBar = () => {
         {links.map((link, index) => {
           return (
             <SideBarItem key={index} uniqueKey={index.toString()} {...link} />
-          )
+          );
         })}
       </div>
     </div>
-  )
-}
+  );
+};
 
 const SideBarItem = (props: SideBarItemType) => {
-  const { uniqueKey = "", title, iconType, url, contents } = props
-  const styles = useStyles()
+  const { uniqueKey = '', title, iconType, url, contents } = props;
+  const styles = useStyles();
   const [expandKeys, setExpandKeys] = useState<{
-    [key in string]: boolean
-  }>({})
+    [key in string]: boolean;
+  }>({});
 
-  const location = useLocation()
-  const isActive = location.pathname === url
+  const location = useLocation();
+  const isActive = location.pathname === url;
 
   const handleExpandNav = (key?: string) => {
     if (key) {
-      const newExpandKeys: any = JSON.parse(JSON.stringify(expandKeys))
-      newExpandKeys[key] = !newExpandKeys[key]
+      const newExpandKeys: any = JSON.parse(JSON.stringify(expandKeys));
+      newExpandKeys[key] = !newExpandKeys[key];
 
-      setExpandKeys(newExpandKeys)
+      setExpandKeys(newExpandKeys);
     }
-  }
+  };
 
   if (contents) {
     return (
       <div className={classnames(styles.wrapLink(expandKeys[uniqueKey]))}>
         <div
           className={classnames(styles.link(isActive))}
-          onClick={() => handleExpandNav(uniqueKey)}>
+          onClick={() => handleExpandNav(uniqueKey)}
+        >
           {iconType && (
             <Icon
               type={iconType}
@@ -76,7 +77,7 @@ const SideBarItem = (props: SideBarItemType) => {
 
           <div className={classnames(styles.title(isActive))}>{title}</div>
           <Icon
-            type={"angle-down"}
+            type={'angle-down'}
             classNames={classnames(styles.iconNav(false), styles.iconDropdown)}
           />
         </div>
@@ -92,11 +93,11 @@ const SideBarItem = (props: SideBarItemType) => {
           </div>
         )}
       </div>
-    )
+    );
   }
 
   return (
-    <Link to={url ?? ""} className={classnames(styles.link(isActive))}>
+    <Link to={url ?? ''} className={classnames(styles.link(isActive))}>
       {iconType && (
         <Icon
           type={iconType}
@@ -106,54 +107,54 @@ const SideBarItem = (props: SideBarItemType) => {
 
       <div className={classnames(styles.title(isActive))}>{title}</div>
     </Link>
-  )
-}
+  );
+};
 
 const useStyles = () => {
   return {
-    root: classnames(sizing("w-full")),
+    root: classnames(sizing('w-full')),
     logo: classnames(
-      typography("font-bold", "text-tx22"),
-      spacing("mb-10", "px-5")
+      typography('font-bold', 'text-tx22'),
+      spacing('mb-10', 'px-5'),
     ),
-    navigation: classnames(display("flex"), flexDirection("flex-col")),
+    navigation: classnames(display('flex'), flexDirection('flex-col')),
     link: (active: boolean) =>
       classnames(
-        display("flex"),
-        spacing("py-2", "px-5"),
-        alignItems("items-center"),
-        gap("gap-2"),
-        group("group"),
-        cursor("cursor-pointer"),
-        position("relative"),
+        display('flex'),
+        spacing('py-2', 'px-5'),
+        alignItems('items-center'),
+        gap('gap-2'),
+        group('group'),
+        cursor('cursor-pointer'),
+        position('relative'),
         active
           ? borders(
-              "border-r-4",
-              "hover:border-primary-color",
-              "border-secondary-color"
+              'border-r-4',
+              'hover:border-primary-color',
+              'border-secondary-color',
             )
-          : null
+          : null,
       ),
     iconNav: (active: boolean) =>
       classnames(
-        sizing("w-6", "h-5"),
+        sizing('w-6', 'h-5'),
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
-        active ? fill("fill-secondary-color") : fill("fill-gray-500"),
+        active ? fill('fill-secondary-color') : fill('fill-gray-500'),
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
-        group("group-hover:fill-primary-color")
+        group('group-hover:fill-primary-color'),
       ),
-    iconDropdown: classnames(position("absolute"), inset("right-5")),
+    iconDropdown: classnames(position('absolute'), inset('right-5')),
     title: (active: boolean) =>
       classnames(
-        active ? typography("text-secondary-color") : typography("text-gray-2"),
+        active ? typography('text-secondary-color') : typography('text-gray-3'),
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
-        group("group-hover:text-primary-color")
+        group('group-hover:text-primary-color'),
       ),
     wrapLink: (isExpand?: boolean) =>
-      classnames(isExpand ? backgroundColor("bg-gray-100") : null),
-    wrapChildLink: classnames(spacing("pl-8")),
-  }
-}
+      classnames(isExpand ? backgroundColor('bg-gray-100') : null),
+    wrapChildLink: classnames(spacing('pl-8')),
+  };
+};

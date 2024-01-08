@@ -1,18 +1,18 @@
-import { AxiosRequestConfig } from "axios"
-import { BaseService } from "../base/base.service"
+import { AxiosRequestConfig } from 'axios';
+import { BaseService } from '../base/base.service';
 
 export class UserService extends BaseService {
-  private static instance: UserService
+  private static instance: UserService;
 
   public static getInstance(): UserService {
     if (!UserService.instance) {
-      UserService.instance = new UserService()
+      UserService.instance = new UserService();
     }
 
-    return UserService.instance
+    return UserService.instance;
   }
 
   public getUsers(options: AxiosRequestConfig<any>) {
-    return this.serverCommunicate.get("/user", options)
+    return this.serverCommunicate.get('/user', options);
   }
 }

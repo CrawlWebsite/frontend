@@ -1,2 +1,2 @@
-export * from "./crawler.controller"
-export * from "./crawler.reducer"
+export * from './crawler.controller';
+export * from './crawler.reducer';

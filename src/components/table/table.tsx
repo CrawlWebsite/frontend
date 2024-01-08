@@ -1,58 +1,41 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState } from 'react';
 import {
-  createColumnHelper,
   flexRender,
   getCoreRowModel,
   useReactTable,
-} from "@tanstack/react-table"
+} from '@tanstack/react-table';
+import { TableProps } from './types';
+import classnames, { sizing, spacing } from '@frontend/tailwindcss-classnames';
 
-export const Table = (props: any) => {
-  const [data, setData] = useState(() => [...props.data])
+export const Table = (props: TableProps) => {
+  const { data, columns, headerClassnames, rowClassnames } = props;
+
+  const [tableData, setTableData] = useState(() => [...data]);
+  const styles = useStyles();
 
   useEffect(() => {
-    setData([...props.data])
-  }, [props.data])
-
-  const columnHelper = createColumnHelper<any>()
-  const columns = [
-    columnHelper.accessor("url", {
-      header: () => <span>URL</span>,
-      cell: (info) => <span>{info.getValue()}</span>,
-    }),
-    columnHelper.accessor("startPage", {
-      header: () => <span>Start page</span>,
-      cell: (info) => <span>{info.getValue()}</span>,
-    }),
-    columnHelper.accessor("endPage", {
-      header: () => <span>End page</span>,
-      cell: (info) => <span>{info.renderValue()}</span>,
-    }),
-    columnHelper.accessor("status", {
-      header: () => <span>Status</span>,
-      cell: (info) => <span>{info.renderValue()}</span>,
-    }),
-  ]
+    setTableData([...data]);
+  }, [data]);
 
   const table = useReactTable({
-    data,
+    data: tableData,
     columns,
     getCoreRowModel: getCoreRowModel(),
-  })
+  });
 
-  console.log(1111)
   return (
     <div>
-      <table>
-        <thead>
-          {table.getHeaderGroups().map((headerGroup) => (
+      <table className={classnames(styles.table)}>
+        <thead className={classnames(headerClassnames)}>
+          {table.getHeaderGroups().map(headerGroup => (
             <tr key={headerGroup.id}>
-              {headerGroup.headers.map((header) => (
+              {headerGroup.headers.map(header => (
                 <th key={header.id}>
                   {header.isPlaceholder
                     ? null
                     : flexRender(
                         header.column.columnDef.header,
-                        header.getContext()
+                        header.getContext(),
                       )}
                 </th>
               ))}
@@ -60,17 +43,36 @@ export const Table = (props: any) => {
           ))}
         </thead>
         <tbody>
-          {table.getRowModel().rows.map((row) => (
-            <tr key={row.id}>
-              {row.getVisibleCells().map((cell) => (
-                <td key={cell.id}>
-                  {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                </td>
-              ))}
+          {table.getRowModel().rows.map(row => (
+            <tr key={row.id} className={classnames(rowClassnames)}>
+              {row.getVisibleCells().map(cell => {
+                const cellContext = cell.getContext();
+
+                const cellClassNames =
+                  cellContext.cell.column.columnDef.meta?.getCellClassNames(
+                    cellContext,
+                  );
+
+                return (
+                  <td
+                    key={cell.id}
+                    className={classnames(styles.cell, cellClassNames)}
+                  >
+                    {flexRender(cell.column.columnDef.cell, cellContext)}
+                  </td>
+                );
+              })}
             </tr>
           ))}
         </tbody>
       </table>
     </div>
-  )
-}
+  );
+};
+
+const useStyles = () => {
+  return {
+    table: classnames(sizing('w-full')),
+    cell: classnames(spacing('p-2')),
+  };
+};

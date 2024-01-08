@@ -1,29 +1,29 @@
-import { createAsyncThunk } from "@reduxjs/toolkit"
-import { UserService } from "@frontend/api/user"
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import { UserService } from '@frontend/api/user';
 
 export class UserController {
-  private static instance: UserController
-  private userService: UserService = UserService.getInstance()
+  private static instance: UserController;
+  private userService: UserService = UserService.getInstance();
 
   public static getInstance(): UserController {
     if (!UserController.instance) {
-      UserController.instance = new UserController()
+      UserController.instance = new UserController();
     }
 
-    return UserController.instance
+    return UserController.instance;
   }
 
   public getUsers = createAsyncThunk(
-    "getUsersAPI",
+    'getUsersAPI',
     async (_, { rejectWithValue }) => {
-      const fetchFn = this.userService.getUsers({})
+      const fetchFn = this.userService.getUsers({});
 
       try {
-        const response = await fetchFn()
-        return response
+        const response = await fetchFn();
+        return response;
       } catch (err: any) {
-        return rejectWithValue(err.message)
+        return rejectWithValue(err.message);
       }
-    }
-  )
+    },
+  );
 }

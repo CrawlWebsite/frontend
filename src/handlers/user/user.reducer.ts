@@ -1,22 +1,22 @@
-import { createSlice } from "@reduxjs/toolkit"
-import { UserController } from "./user.controller"
-import { UserState } from "./types"
-import { User } from "@frontend/repositories"
+import { createSlice } from '@reduxjs/toolkit';
+import { UserController } from './user.controller';
+import { UserState } from './types';
+import { User } from '@frontend/repositories';
 
-const userController = UserController.getInstance()
+const userController = UserController.getInstance();
 
-const initialState: UserState = {}
+const initialState: UserState = {};
 
 export const userSlice = createSlice({
-  name: "userSlice",
+  name: 'userSlice',
   initialState,
   reducers: {},
-  extraReducers: (builder) => {
+  extraReducers: builder => {
     builder.addCase(
       userController.getUsers.fulfilled,
       (state, action): UserState => {
-        const { records, metadata } = action.payload
-        const { currentPage, pageSize, totalCount } = metadata
+        const { records, metadata } = action.payload;
+        const { currentPage, pageSize, totalCount } = metadata;
 
         return {
           ...state,
@@ -24,21 +24,21 @@ export const userSlice = createSlice({
           currentPage,
           pageSize,
           totalUsers: totalCount,
-        }
-      }
-    )
+        };
+      },
+    );
     builder.addCase(
       userController.getUsers.rejected,
       (state, action): UserState => {
         return {
           ...state,
           error: action.payload,
-        }
-      }
-    )
+        };
+      },
+    );
   },
-})
+});
 
 // eslint-disable-next-line no-empty-pattern
-export const {} = userSlice.actions
-export const { reducer: userReducer } = userSlice
+export const {} = userSlice.actions;
+export const { reducer: userReducer } = userSlice;
