@@ -1,10 +1,9 @@
 import { createContext, useContext, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
 
 import { UserController } from '@frontend/handlers/user';
 import { useReduxDispatch, useReduxSelector } from '@frontend/redux/hooks';
 import { User } from '@frontend/repositories';
-import { PAGE_LINKS } from '@frontend/react-routes/permissionLink';
+import { getCookie } from '@frontend/helpers/cookie';
 
 type AuthContextType = {
   user: User | undefined;
@@ -25,8 +24,8 @@ export const AuthProvider = (props: any) => {
   const dispatch = useReduxDispatch();
 
   useEffect(() => {
-    if (window.location.pathname !== PAGE_LINKS.LOGIN.path)
-      dispatch(userController.getCurrentUser());
+    const authentication = getCookie('Authentication');
+    if (authentication) dispatch(userController.getCurrentUser());
   }, []);
 
   return (

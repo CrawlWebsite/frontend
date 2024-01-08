@@ -6,6 +6,7 @@ import { PageHeader } from '@frontend/modules/page-header';
 import { PAGE_LINKS } from '@frontend/react-routes/permissionLink';
 import { Table } from '@frontend/components/table';
 import classnames, {
+  alignItems,
   backgroundColor,
   borderRadius,
   cursor,
@@ -66,7 +67,7 @@ export const Crawler = () => {
     columnHelper.accessor('action', {
       header: () => <span className={styles.headerCell}>Action</span>,
       cell: () => (
-        <>
+        <div className={classnames(styles.actionCell)}>
           <Icon
             type="edit"
             classNames={classnames(styles.icon, styles.editIcon)}
@@ -75,13 +76,8 @@ export const Crawler = () => {
             type="delete"
             classNames={classnames(styles.icon, styles.deleteIcon)}
           />
-        </>
+        </div>
       ),
-      meta: {
-        getCellClassNames: () => {
-          return styles.actionCell;
-        },
-      },
     }),
   ];
 
@@ -100,46 +96,7 @@ export const Crawler = () => {
 
         <Table
           columns={columns}
-          data={
-            crawlerState.crawlerProcesses ?? [
-              {
-                url: 'http://localhost',
-                startPage: 1,
-                endPage: 6,
-                status: 'created',
-              },
-              {
-                url: 'http://localhost',
-                startPage: 1,
-                endPage: 6,
-                status: 'created',
-              },
-              {
-                url: 'http://localhost',
-                startPage: 1,
-                endPage: 6,
-                status: 'created',
-              },
-              {
-                url: 'http://localhost',
-                startPage: 1,
-                endPage: 6,
-                status: 'created',
-              },
-              {
-                url: 'http://localhost',
-                startPage: 1,
-                endPage: 6,
-                status: 'created',
-              },
-              {
-                url: 'http://localhost',
-                startPage: 1,
-                endPage: 6,
-                status: 'created',
-              },
-            ]
-          }
+          data={crawlerState.crawlerProcesses ?? []}
           headerClassnames={styles.tableHeader}
           rowClassnames={styles.tableRow}
         />
@@ -166,6 +123,7 @@ const useStyles = () => {
     actionCell: classnames(
       display('flex'),
       justifyContent('justify-center'),
+      alignItems('items-center'),
       gap('gap-2'),
     ),
 

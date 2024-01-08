@@ -2,6 +2,7 @@
 import { PAGE_LINKS } from '@frontend/react-routes/permissionLink';
 import { IServerCommunicate } from './serverCommunicate.interface';
 import axios, { AxiosRequestConfig } from 'axios';
+import { clearCookie } from '@frontend/helpers/cookie';
 
 export class ServerCommunicate implements IServerCommunicate {
   private static instance: ServerCommunicate;
@@ -30,8 +31,9 @@ export class ServerCommunicate implements IServerCommunicate {
           return Promise.resolve(res?.data?.message);
         })
         .catch((error: any) => {
-          console.log('error', error);
+          // If got an unauthorized error, clear token and redirect to login page
           if (error?.response?.status === 401) {
+            clearCookie('Authentication');
             window.location.href = PAGE_LINKS.LOGIN.path;
           }
           return Promise.reject(error);

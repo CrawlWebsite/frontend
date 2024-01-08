@@ -13,7 +13,6 @@ export default defineConfig({
       ),
       '@frontend/redux-store': path.resolve(__dirname, './src/redux/store.ts'),
       '@frontend': path.resolve(__dirname, './src/'),
-      '/helper': path.resolve(__dirname, './src/helpers/'),
     },
   },
 });

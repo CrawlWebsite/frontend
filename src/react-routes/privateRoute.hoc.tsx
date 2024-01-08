@@ -15,8 +15,6 @@ export const withPrivateRoute = (Component: React.FC) => {
       }
     }, [isLogged, isLoading]);
 
-    console.log(isLogged, isLoading);
-
     // If user is logged in, return original component
     return (
       <>

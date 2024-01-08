@@ -15,9 +15,7 @@ export const withAuthRoute = (Component: React.FC) => {
       }
     }, [isLogged, isLoading]);
 
-    console.log(isLogged, isLoading);
-
-    // If user is logged in, return original component
+    // If user is not logged in, return original component
     return (
       <>
         {isLoading ? <Fallback /> : !isLogged ? <Component {...props} /> : null}

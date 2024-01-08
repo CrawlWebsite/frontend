@@ -14,8 +14,8 @@ export const userSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: builder => {
+    // GetCurrentUserAPI
     builder.addCase(userController.getCurrentUser.pending, state => {
-      console.log('Checking pending');
       state.currentUser.isLoading = true;
     });
     builder.addCase(
@@ -44,6 +44,7 @@ export const userSlice = createSlice({
       },
     );
 
+    // GetUsersAPI
     builder.addCase(
       userController.getUsers.fulfilled,
       (state, action): UserState => {

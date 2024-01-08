@@ -12,6 +12,7 @@ export const crawlerSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: builder => {
+    // GetCrawlProcessByUserAPI
     builder.addCase(
       crawlerController.getCrawlProcessByUser.fulfilled,
       (state, action): CrawlerState => {
