@@ -1,22 +1,40 @@
+import { createContext, useContext, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+
+import { UserController } from '@frontend/handlers/user';
+import { useReduxDispatch, useReduxSelector } from '@frontend/redux/hooks';
 import { User } from '@frontend/repositories';
-import { createContext, useContext } from 'react';
+import { PAGE_LINKS } from '@frontend/react-routes/permissionLink';
 
 type AuthContextType = {
-  user: User | null;
+  user: User | undefined;
+  isLoading?: boolean;
+  isLogged?: boolean;
 };
 
 const AuthContext = createContext<AuthContextType>({
-  user: null,
+  user: undefined,
+  isLoading: true,
+  isLogged: false,
 });
 
 export const AuthProvider = (props: any) => {
+  const userController = UserController.getInstance();
+  const { userState } = useReduxSelector(['userState']);
+  const { currentUser } = userState;
+  const dispatch = useReduxDispatch();
+
+  useEffect(() => {
+    if (window.location.pathname !== PAGE_LINKS.LOGIN.path)
+      dispatch(userController.getCurrentUser());
+  }, []);
+
   return (
     <AuthContext.Provider
       value={{
-        user: {
-          name: 'Nelson',
-          email: 'nelson@gmail.com',
-        },
+        isLoading: currentUser.isLoading,
+        isLogged: Boolean(currentUser.data?.id),
+        user: currentUser.data,
       }}
     >
       {props.children}

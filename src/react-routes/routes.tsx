@@ -30,7 +30,7 @@ export const Routes = ({ pages }: { pages: Record<string, unknown> }) => {
   );
 };
 
-const useRoutes = (pages: Record<string, unknown>) => {
+const useRoutes = (pages: Record<string, any>) => {
   const routes = Object.keys(pages)
     .map(key => {
       let path = key
@@ -60,7 +60,7 @@ const useRoutes = (pages: Record<string, unknown>) => {
 
       return {
         path,
-        component: (pages[key] as any)?.default,
+        component: pages[key],
       };
     })
     .filter(route => route.component);

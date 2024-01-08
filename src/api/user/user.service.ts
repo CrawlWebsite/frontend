@@ -12,6 +12,10 @@ export class UserService extends BaseService {
     return UserService.instance;
   }
 
+  public getCurrentUser(options: AxiosRequestConfig<any>) {
+    return this.serverCommunicate.get('/user/info', options);
+  }
+
   public getUsers(options: AxiosRequestConfig<any>) {
     return this.serverCommunicate.get('/user', options);
   }

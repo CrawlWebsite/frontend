@@ -13,6 +13,20 @@ export class UserController {
     return UserController.instance;
   }
 
+  public getCurrentUser = createAsyncThunk(
+    'getCurrentUserAPI',
+    async (_, { rejectWithValue }) => {
+      const fetchFn = this.userService.getCurrentUser({});
+
+      try {
+        const response = await fetchFn();
+        return response;
+      } catch (err: any) {
+        return rejectWithValue(err.message);
+      }
+    },
+  );
+
   public getUsers = createAsyncThunk(
     'getUsersAPI',
     async (_, { rejectWithValue }) => {

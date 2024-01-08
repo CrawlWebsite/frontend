@@ -5,13 +5,45 @@ import { User } from '@frontend/repositories';
 
 const userController = UserController.getInstance();
 
-const initialState: UserState = {};
+const initialState: UserState = {
+  currentUser: {},
+};
 
 export const userSlice = createSlice({
   name: 'userSlice',
   initialState,
   reducers: {},
   extraReducers: builder => {
+    builder.addCase(userController.getCurrentUser.pending, state => {
+      console.log('Checking pending');
+      state.currentUser.isLoading = true;
+    });
+    builder.addCase(
+      userController.getCurrentUser.fulfilled,
+      (state, action): UserState => {
+        return {
+          ...state,
+          currentUser: {
+            ...state.currentUser,
+            isLoading: false,
+            data: User.buildUser(action.payload),
+          },
+        };
+      },
+    );
+    builder.addCase(
+      userController.getCurrentUser.rejected,
+      (state, action): UserState => {
+        return {
+          ...state,
+          currentUser: {
+            isLoading: false,
+            error: action.payload,
+          },
+        };
+      },
+    );
+
     builder.addCase(
       userController.getUsers.fulfilled,
       (state, action): UserState => {

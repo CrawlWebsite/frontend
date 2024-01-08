@@ -6,4 +6,10 @@ export type UserState = {
   pageSize?: number;
   totalUsers?: number;
   error?: any;
+
+  currentUser: {
+    isLoading?: boolean;
+    data?: User;
+    error?: any;
+  };
 };
