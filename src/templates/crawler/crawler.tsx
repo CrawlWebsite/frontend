@@ -8,11 +8,17 @@ import { Table } from '@frontend/components/table';
 import classnames, {
   backgroundColor,
   borderRadius,
+  cursor,
+  display,
+  fill,
+  gap,
+  justifyContent,
   sizing,
   spacing,
   typography,
 } from '@frontend/tailwindcss-classnames';
 import { createColumnHelper } from '@tanstack/react-table';
+import { Icon } from '@frontend/components/icon';
 
 export const Crawler = () => {
   const crawlerController = CrawlerController.getInstance();
@@ -59,7 +65,23 @@ export const Crawler = () => {
     }),
     columnHelper.accessor('action', {
       header: () => <span className={styles.headerCell}>Action</span>,
-      cell: () => <span></span>,
+      cell: () => (
+        <>
+          <Icon
+            type="edit"
+            classNames={classnames(styles.icon, styles.editIcon)}
+          />
+          <Icon
+            type="delete"
+            classNames={classnames(styles.icon, styles.deleteIcon)}
+          />
+        </>
+      ),
+      meta: {
+        getCellClassNames: () => {
+          return styles.actionCell;
+        },
+      },
     }),
   ];
 
@@ -141,5 +163,16 @@ const useStyles = () => {
 
     headerCell: classnames(typography('text-gray-2')),
     pageCell: classnames(typography('text-center')),
+    actionCell: classnames(
+      display('flex'),
+      justifyContent('justify-center'),
+      gap('gap-2'),
+    ),
+
+    icon: classnames(sizing('h-4', 'w-4'), cursor('cursor-pointer')),
+    editIcon: classnames(fill('fill-secondary-color')),
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    deleteIcon: classnames(fill('fill-red-600')),
   };
 };

@@ -5,4 +5,10 @@ export type IconProps = {
   type: IconType;
 };
 
-export type IconType = 'bell' | 'angle-down' | 'user' | 'website';
+export type IconType =
+  | 'bell'
+  | 'angle-down'
+  | 'user'
+  | 'website'
+  | 'edit'
+  | 'delete';

@@ -1,6 +1,13 @@
 import classnames from '@frontend/tailwindcss-classnames';
 import { IconProps, IconType } from './types';
-import { BellIcon, AngleDownIcon, UserIcon, WebsiteIcon } from './resources';
+import {
+  BellIcon,
+  AngleDownIcon,
+  UserIcon,
+  WebsiteIcon,
+  DeleteIcon,
+  EditIcon,
+} from './resources';
 
 export const Icon = (props: IconProps) => {
   const { classNames, type } = props;
@@ -18,6 +25,10 @@ const getIconByType = (type: IconType) => {
       return <UserIcon />;
     case 'website':
       return <WebsiteIcon />;
+    case 'edit':
+      return <EditIcon />;
+    case 'delete':
+      return <DeleteIcon />;
     default:
       return <></>;
   }
