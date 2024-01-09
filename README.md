@@ -63,6 +63,8 @@ The project follows the following folder structure:
 
 ## Redux Flow
 
+![Alt text](relative%20path/to/img.jpg?raw=true "Title")
+
 ## Technologies Used
 
 The main technologies used in this project are:
