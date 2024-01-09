@@ -63,7 +63,7 @@ The project follows the following folder structure:
 
 ## Redux Flow
 
-![Alt text](relative%20path/to/img.jpg?raw=true "Title")
+<img src="./public/Redux flow.png" />
 
 ## Technologies Used
 
@@ -74,3 +74,12 @@ The main technologies used in this project are:
 - Tailwind CSS: Utility-first CSS framework.
 
 ## Contributing
+
+Follow these steps before committing your changes:
+
+```bash
+# Verify linting issues
+npm run lint
+# Format code
+npm run format:write
+```

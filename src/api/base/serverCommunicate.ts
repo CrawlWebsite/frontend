@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/rules-of-hooks */
 import { PAGE_LINKS } from '@frontend/react-routes/permissionLink';
 import { IServerCommunicate } from './serverCommunicate.interface';
 import axios, { AxiosRequestConfig } from 'axios';

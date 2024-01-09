@@ -4,4 +4,7 @@ import { classnames, typography } from '@frontend/tailwindcss-classnames';
 const Login = () => {
   return <div className={classnames(typography('font-bold'))}>Login</div>;
 };
-export default withAuthRoute(Login);
+
+const EnhancedLogin = withAuthRoute(Login);
+
+export default EnhancedLogin;

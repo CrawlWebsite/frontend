@@ -5,4 +5,6 @@ const CrawlerPage = () => {
   return <Crawler />;
 };
 
-export default withPrivateRoute(CrawlerPage);
+const EnhancedCrawlerPage = withPrivateRoute(CrawlerPage);
+
+export default EnhancedCrawlerPage;
