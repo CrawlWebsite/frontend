@@ -81,7 +81,7 @@ The main technologies used in this project are:
 1. Make your changes in a new git branch
 
     ```bash
-    git checkout -b my-fix-branch master
+    git checkout -b my-fix-branch dev
     ```
 
 2. Follow these steps before committing your changes
