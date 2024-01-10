@@ -7,7 +7,6 @@ This project is a React application using Redux for state management and Tailwin
 1. [Getting Started](#getting-started)
    - [Prerequisites](#prerequisites)
    - [Installation](#installation)
-   - [Running the Project](#running-the-project)
 2. [Folder Structure](#folder-structure)
 3. [Redux Flow](#redux-flow)
 4. [Technologies Used](#technologies-used)
@@ -75,11 +74,50 @@ The main technologies used in this project are:
 
 ## Contributing
 
-Follow these steps before committing your changes:
+### Submitting a Pull Request (PR)
 
-```bash
-# Verify linting issues
-npm run lint
-# Format code
-npm run format:write
-```
+1. Make your changes in a new git branch
+
+    ```bash
+    git checkout -b my-fix-branch master
+    ```
+
+2. Follow these steps before committing your changes
+
+    ```bash
+    # Verify linting issues
+    npm run lint
+    # Format code
+    npm run format:write
+    ```
+
+3. Commit Message Format
+
+    ```bash
+    <type>(<scope>): <subject>
+    <BLANK LINE>
+    <body>
+    <BLANK LINE>
+    <footer>
+    ```
+
+    **Type:**
+    - **build**: Changes that affect the build system or external
+    - **chore**: Updating tasks etc; no production code change
+    - **docs**: Documentation only changes
+    - **feat**: A new feature
+    - **fix**: A bug fix
+    - **perf**: A code change that improves performance
+    - **refactor**: A code change that neither fixes a bug nor adds a feature
+    - **style**: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)
+    - **test**: Adding missing tests or correcting existing tests
+
+    **Scope:**
+    - **api**: for changes made on `api` directory
+    - **handler**: for changes made on `handlers` directory
+    - **repository**: for changes made on `repositories` directory
+    - **helper**: for changes made on `helpers`, `utils` directory
+    - **ui**: for changes made on `components`, `modules`, `templates`, `pages` directory
+    - **redux**: for changes made on `redux` directory
+    - **route**: for changes made on `react-routes` directory
+    - **other**: for changes made on other directory
