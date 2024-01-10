@@ -11,6 +11,8 @@ This project is a React application using Redux for state management and Tailwin
 3. [Redux Flow](#redux-flow)
 4. [Technologies Used](#technologies-used)
 5. [Contributing](#contributing)
+   - [Submitting a Pull Request (PR)](#submitting-a-pull-request-pr)
+   - [Commit Message Guidelines](#commit-message-guidelines)
 
 ## Getting Started
 
@@ -91,7 +93,9 @@ The main technologies used in this project are:
     npm run format:write
     ```
 
-3. Commit Message Format
+### Commit Message Guidelines
+
+1. Commit Message Format
 
     ```bash
     <type>(<scope>): <subject>
@@ -101,7 +105,7 @@ The main technologies used in this project are:
     <footer>
     ```
 
-    **Type:**
+2. Type
     - **build**: Changes that affect the build system or external
     - **chore**: Updating tasks etc; no production code change
     - **docs**: Documentation only changes
@@ -112,7 +116,7 @@ The main technologies used in this project are:
     - **style**: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)
     - **test**: Adding missing tests or correcting existing tests
 
-    **Scope:**
+3. Scope
     - **api**: for changes made on `api` directory
     - **handler**: for changes made on `handlers` directory
     - **repository**: for changes made on `repositories` directory
