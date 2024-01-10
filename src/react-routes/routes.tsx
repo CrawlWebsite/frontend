@@ -54,10 +54,6 @@ const useRoutes = (pages: Record<string, any>) => {
         path = path.substring(0, path.length - 1);
       }
 
-      if (!(pages[key] as any)?.default) {
-        console.warn(`${key} doesn't export a default React component`);
-      }
-
       return {
         path,
         component: pages[key],

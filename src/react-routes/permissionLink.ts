@@ -1,6 +1,6 @@
 export const PAGE_LINKS = {
   LOGIN: {
-    path: '/login',
+    path: '/auth/login',
     title: 'Login',
   },
   CRAWLER_ADMIN: {
