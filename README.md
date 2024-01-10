@@ -80,48 +80,49 @@ The main technologies used in this project are:
 
 1. Make your changes in a new git branch
 
-    ```bash
-    git checkout -b my-fix-branch dev
-    ```
+   ```bash
+   git checkout -b my-fix-branch dev
+   ```
 
 2. Follow these steps before committing your changes
 
-    ```bash
-    # Verify linting issues
-    npm run lint
-    # Format code
-    npm run format:write
-    ```
+   ```bash
+   # Verify linting issues
+   npm run lint
+   # Format code
+   npm run format:write
+   ```
 
 ### Commit Message Guidelines
 
 1. Commit Message Format
 
-    ```bash
-    <type>(<scope>): <subject>
-    <BLANK LINE>
-    <body>
-    <BLANK LINE>
-    <footer>
-    ```
+   ```bash
+   <type>(<scope>): <subject>
+   <BLANK LINE>
+   <body>
+   <BLANK LINE>
+   <footer>
+   ```
 
 2. Type
-    - **build**: Changes that affect the build system or external
-    - **chore**: Updating tasks etc; no production code change
-    - **docs**: Documentation only changes
-    - **feat**: A new feature
-    - **fix**: A bug fix
-    - **perf**: A code change that improves performance
-    - **refactor**: A code change that neither fixes a bug nor adds a feature
-    - **style**: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)
-    - **test**: Adding missing tests or correcting existing tests
+
+   - **build**: Changes that affect the build system or external
+   - **chore**: Updating tasks etc; no production code change
+   - **docs**: Documentation only changes
+   - **feat**: A new feature
+   - **fix**: A bug fix
+   - **perf**: A code change that improves performance
+   - **refactor**: A code change that neither fixes a bug nor adds a feature
+   - **style**: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)
+   - **test**: Adding missing tests or correcting existing tests
 
 3. Scope
-    - **api**: for changes made on `api` directory
-    - **handler**: for changes made on `handlers` directory
-    - **repository**: for changes made on `repositories` directory
-    - **helper**: for changes made on `helpers`, `utils` directory
-    - **ui**: for changes made on `components`, `modules`, `templates`, `pages` directory
-    - **redux**: for changes made on `redux` directory
-    - **route**: for changes made on `react-routes` directory
-    - **other**: for changes made on other directory
+   - **api**: for changes made on `api` directory
+   - **handler**: for changes made on `handlers` directory
+   - **repository**: for changes made on `repositories` directory
+   - **helper**: for changes made on `helpers`, `utils` directory
+   - **ui**: for changes made on `components`, `modules`, `templates`, `pages` directory
+   - **redux**: for changes made on `redux` directory
+   - **route**: for changes made on `react-routes` directory
+   - **other**: for changes made on other directory
