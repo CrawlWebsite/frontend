@@ -3,11 +3,18 @@
 ###################
 
 FROM node:16.20.1-alpine3.17 AS builder
+
 WORKDIR /usr/src/app
+
 COPY package*.json ./
+
 RUN npm install
+
 COPY . .
+
 ENV NODE_ENV production
+
+RUN npm run generate-css-types
 RUN npm run build
 
 ###################
